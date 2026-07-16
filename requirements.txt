@@ -1,0 +1,31 @@
+# Data Manipulation
+numpy
+pandas
+
+# Visualization
+matplotlib
+seaborn
+
+# Machine Learning
+scikit-learn
+xgboost
+scipy
+joblib
+
+# Backend
+fastapi
+uvicorn
+
+# Frontend
+streamlit
+requests
+
+# Data Validation
+pydantic
+
+# Jupyter Notebook
+notebook
+ipykernel
+
+# Utilities
+python-dotenv

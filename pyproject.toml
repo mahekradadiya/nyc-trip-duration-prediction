@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nyc-trip-duration-prediction"
+version = "0.1.0"
+description = "End-to-End NYC Taxi Trip Duration Prediction using Machine Learning, FastAPI and Streamlit."
+readme = "README.md"
+requires-python = ">=3.10"
+
+authors = [
+    { name = "Mahek Radadiya", email = "mekradadiya@gmail.com" }
+]
+
+license = { text = "MIT" }
+
+keywords = [
+    "machine-learning",
+    "fastapi",
+    "streamlit",
+    "xgboost",
+    "regression",
+    "nyc-taxi"
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+dependencies = []
+
+[tool.setuptools]
+packages = ["src"]

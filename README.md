@@ -162,11 +162,6 @@ The following features were created during preprocessing:
 - Pickup Month
 - Pickup Weekday
 - Pickup Year
-- Dropoff Hour
-- Dropoff Day
-- Dropoff Month
-- Dropoff Weekday
-- Dropoff Year
 - Bearing
 - Haversine, Manhattan Distance
 - Encoded Store and Forward Flag
@@ -186,6 +181,18 @@ The project is deployed locally using:
 - Streamlit
 
 The frontend collects trip information from the user and sends it to the FastAPI backend, which performs feature engineering, loads the trained model, and returns the predicted trip duration.
+
+---
+
+# 📂 Dataset
+
+This project uses the **NYC Taxi Trip Duration** dataset from Kaggle.
+
+Download the dataset from:
+
+🔗 https://www.kaggle.com/competitions/nyc-taxi-trip-duration/data?select=train.zip
+
+After downloading, place the dataset files in: data/raw/
 
 ---
 

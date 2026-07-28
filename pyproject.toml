@@ -3,7 +3,7 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nyc-trip-duration-prediction"
+name = "nyc-trip-duration"
 version = "0.1.0"
 description = "End-to-End NYC Taxi Trip Duration Prediction using Machine Learning, FastAPI and Streamlit."
 readme = "README.md"

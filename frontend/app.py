@@ -5,7 +5,8 @@ This application provides a user-friendly interface
 for predicting NYC taxi trip duration using the
 FastAPI backend.
 """
-
+import streamlit_datetime_picker
+from datetime import datetime
 import streamlit as st
 import requests
 
@@ -50,15 +51,15 @@ passenger_count = st.number_input(
     value=1
 )
 
-pickup_datetime = st.text_input(
-    "Pickup Datetime",
-    "2016-03-14 17:24:55"
-)
+col1, col2 = st.columns([2, 1])
 
-dropoff_datetime = st.text_input(
-    "Dropoff Datetime",
-    "2016-03-14 17:24:55"
-)
+with col1:
+    pickup_date = st.date_input("Pickup Date")
+
+with col2:
+    pickup_time = st.time_input("Pickup Time")
+
+pickup_datetime = datetime.combine(pickup_date, pickup_time)
 
 pickup_longitude = st.number_input(
     "Pickup Longitude",
@@ -101,9 +102,7 @@ if st.button("Predict Trip Duration"):
 
         "passenger_count": passenger_count,
 
-        "pickup_datetime": pickup_datetime,
-
-        "dropoff_datetime": dropoff_datetime,
+        "pickup_datetime": pickup_datetime.isoformat(),
 
         "pickup_longitude": pickup_longitude,
 

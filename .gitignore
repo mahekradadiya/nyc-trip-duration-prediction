@@ -11,6 +11,9 @@ venv/
 env/
 .venv/
 
+# Models
+models/
+
 # IDE
 .vscode/
 .idea/

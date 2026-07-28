@@ -21,20 +21,6 @@ def create_datetime_features(df):
 
     df = df.copy()
 
-    df["dropoff_datetime"] = pd.to_datetime(df["dropoff_datetime"])
-
-    df["dropoff_month"] = df["dropoff_datetime"].dt.month
-    df["dropoff_day"] = df["dropoff_datetime"].dt.day
-    df["dropoff_weekday"] = df["dropoff_datetime"].dt.weekday
-    df["dropoff_hour"] = df["dropoff_datetime"].dt.hour
-    df["dropoff_minute"] = df["dropoff_datetime"].dt.minute
-
-    df["is_weekend"] = (
-        df["dropoff_weekday"]
-        .isin([5, 6])
-        .astype(int)
-    )
-
     df["pickup_datetime"] = pd.to_datetime(df["pickup_datetime"])
 
     df["pickup_month"] = df["pickup_datetime"].dt.month

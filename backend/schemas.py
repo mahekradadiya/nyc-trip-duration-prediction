@@ -33,11 +33,6 @@ class TripData(BaseModel):
         description="Pickup datetime (YYYY-MM-DD HH:MM:SS)"
     )
 
-    dropoff_datetime: datetime = Field(
-        ...,
-        description="Pickup datetime (YYYY-MM-DD HH:MM:SS)"
-    )
-
     pickup_longitude: float = Field(
         ...,
         ge=-74.3,

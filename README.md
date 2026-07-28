@@ -2,38 +2,38 @@
 
 ## 📌 Project Overview
 
-The **NYC Taxi Trip Duration Prediction** project aims to estimate the duration of taxi trips in New York City using historical trip records and machine learning techniques. Accurate trip duration prediction can improve route planning, customer experience, fleet management, and operational efficiency for ride-hailing and taxi services.
+The **NYC Taxi Trip Duration Prediction** project estimates the duration of taxi trips in New York City using historical trip records and machine learning techniques. Accurate trip duration prediction can improve route planning, customer experience, fleet management, and operational efficiency for ride-hailing and taxi services.
 
-This project follows a complete end-to-end Machine Learning workflow, starting from data understanding and preprocessing to model deployment using **FastAPI** and **Streamlit**.
+This project follows a complete end-to-end Machine Learning workflow, from data understanding and preprocessing to feature engineering, model training, evaluation, and deployment using **FastAPI** and **Streamlit**.
 
 ---
 
 ## 🎯 Problem Statement
 
-Predicting taxi trip duration is a regression problem influenced by several factors such as pickup location, dropoff location, travel distance, pickup time, passenger count, and traffic conditions.
+Predicting taxi trip duration is a regression problem influenced by several factors, including pickup location, dropoff location, travel distance, pickup time, passenger count, and other trip-related information.
 
-The objective of this project is to develop a robust machine learning model capable of accurately predicting trip duration using engineered features derived from the available trip data.
+The objective of this project is to build a robust machine learning model capable of accurately predicting taxi trip duration using engineered features derived from the available trip data.
 
 ---
 
 ## 🎯 Objectives
 
-- Understand and explore the NYC Taxi Trip dataset.
+- Explore and understand the NYC Taxi Trip Duration dataset.
 - Perform data cleaning and preprocessing.
-- Engineer meaningful features such as travel distance and datetime-based attributes.
+- Engineer meaningful features from temporal and geographical information.
 - Train and compare multiple regression algorithms.
-- Optimize the best-performing model using RandomizedSearchCV.
-- Interpret model performance through evaluation metrics and feature importance.
+- Optimize the best-performing model using **RandomizedSearchCV**.
+- Evaluate model performance using regression metrics.
 - Deploy the trained model using FastAPI.
-- Develop an interactive web application using Streamlit for real-time predictions.
+- Build an interactive Streamlit application for real-time predictions.
 
 ---
 
 # 📂 Dataset
 
-The project uses the **NYC Taxi Trip Duration Dataset** provided by Kaggle.
+This project uses the **NYC Taxi Trip Duration** dataset from Kaggle.
 
-Dataset contains information such as:
+The dataset contains information such as:
 
 - Vendor ID
 - Pickup Date & Time
@@ -43,11 +43,21 @@ Dataset contains information such as:
 - Store and Forward Flag
 - Trip Duration (Target Variable)
 
+### Download Dataset
+
+🔗 https://www.kaggle.com/competitions/nyc-taxi-trip-duration/data?select=train.zip
+
+After downloading, extract the dataset and place **train.csv** inside:
+
+```text
+data/raw/
+```
+
 ---
 
 # 🏗️ Project Structure
 
-```
+```text
 NYC_trip_duration/
 │
 ├── backend/
@@ -62,20 +72,21 @@ NYC_trip_duration/
 │
 ├── data/
 │   ├── raw/
-│   ├── cleaned/
+│   │   └── README.md
 │   └── processed/
+│       └── README.md
 │
 ├── models/
-│   ├── xgboost_model.pkl
+│   ├── model.pkl
 │   └── feature_columns.pkl
 │
 ├── notebooks/
 │   ├── 01_data_understanding.ipynb
 │   ├── 02_data_cleaning.ipynb
-│   ├── 03_exploratory_data_analysis.ipynb
+│   ├── 03_eda.ipynb
 │   ├── 04_feature_engineering.ipynb
 │   ├── 05_model_training.ipynb
-│   └── 06_model_interpretation_and_analysis.ipynb
+│   └── 06_model_evaluation.ipynb
 │
 ├── src/
 │   ├── config.py
@@ -85,14 +96,14 @@ NYC_trip_duration/
 ├── requirements.txt
 ├── pyproject.toml
 ├── README.md
-└── LICENSE
+└── .gitignore
 ```
 
 ---
 
 # 🔄 Machine Learning Workflow
 
-```
+```text
 Dataset
    │
    ▼
@@ -130,26 +141,15 @@ Streamlit Frontend
 
 # 🤖 Machine Learning Models
 
-The following regression algorithms were evaluated:
+The following regression algorithms were trained and evaluated:
 
 - Linear Regression
 - Decision Tree Regressor
 - Random Forest Regressor
 - Gradient Boosting Regressor
-- XGBoost Regressor (Optimized)
+- XGBoost Regressor
 
-After comparing the performance of all models, the optimized **XGBoost Regressor** was selected as the final deployment model.
-
----
-
-# 📊 Model Evaluation Metrics
-
-The models were evaluated using:
-
-- Mean Absolute Error (MAE)
-- Mean Squared Error (MSE)
-- Root Mean Squared Error (RMSE)
-- R² Score
+After comparing all models, the **optimized XGBoost Regressor** achieved the best performance and was selected for deployment.
 
 ---
 
@@ -162,9 +162,29 @@ The following features were created during preprocessing:
 - Pickup Month
 - Pickup Weekday
 - Pickup Year
+- Haversine Distance
+- Manhattan Distance
 - Bearing
-- Haversine, Manhattan Distance
 - Encoded Store and Forward Flag
+
+---
+
+# 📊 Model Evaluation
+
+The regression models were evaluated using:
+
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- Root Mean Squared Error (RMSE)
+- R² Score
+
+---
+
+# 📈 Results
+
+The optimized **XGBoost Regressor** outperformed the other regression models and was selected as the final model for deployment.
+
+The deployed application predicts taxi trip duration in real time using engineered trip features through a FastAPI backend and an interactive Streamlit interface.
 
 ---
 
@@ -180,31 +200,25 @@ The project is deployed locally using:
 
 - Streamlit
 
-The frontend collects trip information from the user and sends it to the FastAPI backend, which performs feature engineering, loads the trained model, and returns the predicted trip duration.
-
----
-
-# 📂 Dataset
-
-This project uses the **NYC Taxi Trip Duration** dataset from Kaggle.
-
-Download the dataset from:
-
-🔗 https://www.kaggle.com/competitions/nyc-taxi-trip-duration/data?select=train.zip
-
-After downloading, place the dataset files in: data/raw/
+The Streamlit application collects trip information from the user and sends it to the FastAPI backend. The backend performs feature engineering, loads the trained model, predicts the trip duration, and returns the prediction to the frontend.
 
 ---
 
 # 💻 Installation
 
-Move to the project directory
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Move to the project directory:
 
 ```bash
 cd NYC_trip_duration
 ```
 
-Install the required dependencies
+Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -218,9 +232,9 @@ pip install -r requirements.txt
 uvicorn backend.app:app --reload
 ```
 
-API Documentation
+FastAPI Documentation:
 
-```
+```text
 http://127.0.0.1:8000/docs
 ```
 
@@ -234,22 +248,22 @@ streamlit run frontend/app.py
 
 ---
 
-# 📈 Sample Prediction Workflow
+# 📈 Prediction Workflow
 
-```
+```text
 User Input
       │
       ▼
-Streamlit UI
+Streamlit Interface
       │
       ▼
-FastAPI API
+FastAPI Backend
       │
       ▼
 Feature Engineering
       │
       ▼
-XGBoost Model
+Optimized XGBoost Model
       │
       ▼
 Predicted Trip Duration
@@ -271,12 +285,15 @@ Predicted Trip Duration
 ### Data Visualization
 
 - Matplotlib
-- Seaborn
 
 ### Machine Learning
 
 - Scikit-learn
 - XGBoost
+
+### Hyperparameter Tuning
+
+- RandomizedSearchCV
 
 ### Backend
 
@@ -291,18 +308,18 @@ Predicted Trip Duration
 
 - Joblib
 
+---
+
 # 🔮 Future Improvements
 
 - Integrate real-time traffic information.
-- Deploy the application on a cloud platform.
-- Add route visualization using interactive maps.
-- Improve prediction accuracy through advanced feature engineering.
-- Implement automated model retraining.
+- Deploy the application to a cloud platform.
+- Add interactive route visualization.
+- Improve prediction accuracy through additional feature engineering.
+- Automate model retraining using MLOps practices.
 
 ---
 
 # 👨‍💻 Author
 
 **Mahek Radadiya**
-
----
